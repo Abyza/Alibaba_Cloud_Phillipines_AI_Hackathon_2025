@@ -1,8 +1,20 @@
 [
     {
-        "medication": "fail",
-        "dosage": "fail",
-        "frequency": "fail",
-        "notes": "fail"
+        "medication": "Naproxen",
+        "dosage": "250 mg",
+        "frequency": "twice daily",
+        "notes": "Take with food to avoid gastrointestinal irritation; avoid taking on an empty stomach."
+    },
+    {
+        "medication": "Melatonin",
+        "dosage": "Not specified",
+        "frequency": "once daily at bedtime",
+        "notes": "For insomnia; take shortly before going to bed."
+    },
+    {
+        "medication": "Paracetamol (Acetaminophen)",
+        "dosage": "200 mg",
+        "frequency": "every 6 hours as needed",
+        "notes": "For pain relief; do not exceed recommended maximum daily dose."
     }
 ]

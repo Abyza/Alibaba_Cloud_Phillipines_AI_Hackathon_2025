@@ -27,7 +27,8 @@ from langchain_qwq import ChatQwen
 import json
 
 def generate_prescription_from_dictation(text: str, file_name="prescription_output.json"):
-    """Generate an e-prescription based on the doctor's dictation and save the response to a JSON file. If an error occurs, return a failure JSON."""
+    """Generate an e-prescription based on the doctor's dictation and save the response to a JSON file.
+    If an error occurs, return a failure JSON."""
     llm = ChatQwen(
         model="qwen3-max",
         max_tokens=3_000,
@@ -37,17 +38,17 @@ def generate_prescription_from_dictation(text: str, file_name="prescription_outp
     
     # Define strict instructions to output prescription details in JSON format
     messages = [
-    (
-        "system", 
-        "You are an AI assistant that generates e-prescriptions based on the doctor's dictation. "
-        "When the doctor dictates a prescription, extract all medications mentioned, along with their name, dosage, frequency, "
-        "and any additional instructions or notes. Do not include any patient identifying information such as name. "
-        "Output the prescription details as a list of JSON objects, each containing the following keys: "
-        "'medication', 'dosage', 'frequency', and 'notes'. Ensure the output is in JSON format, with each medication as a separate object. "
-        "Even if only one medication is mentioned, wrap it in a list, so the response is always a JSON array with one or more objects."
-    ),
-    ("human", text),  # This is the doctor's dictation input
-]
+        (
+            "system", 
+            "You are an AI assistant that generates e-prescriptions based on the doctor's dictation. "
+            "When the doctor dictates a prescription, extract all medications mentioned, along with their name, dosage, frequency, "
+            "and any additional instructions or notes. Do not include any patient identifying information such as name. "
+            "Output the prescription details as a list of JSON objects, each containing the following keys: "
+            "'medication', 'dosage', 'frequency', and 'notes'. Ensure the output is in JSON format, with each medication as a separate object. "
+            "Even if only one medication is mentioned, wrap it in a list, so the response is always a JSON array with one or more objects."
+        ),
+        ("human", text),  # This is the doctor's dictation input
+    ]
     
     try:
         # Get the AI response
@@ -55,6 +56,10 @@ def generate_prescription_from_dictation(text: str, file_name="prescription_outp
         
         # Parse the response to ensure it is valid JSON
         prescription_data = json.loads(ai_msg.content)
+
+        # Check if the response is a list, if not wrap it in a list
+        if not isinstance(prescription_data, list):
+            prescription_data = [prescription_data]
 
         # Check if the response is empty or invalid
         if not prescription_data:
@@ -76,6 +81,7 @@ def generate_prescription_from_dictation(text: str, file_name="prescription_outp
         json.dump(prescription_data, json_file, indent=4)
     
     return f"Prescription data saved to {file_name}"
+
 
 
 from reportlab.lib.pagesizes import A4
