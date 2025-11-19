@@ -1,0 +1,17 @@
+streamlit run app.py
+
+
+Paumed
+
+Paumed Clinic
+
+186 Buha Street, Hussi, Balagtas, Bulacan
+
+(+63) 928-187-6342
+
+Athana Nata, MD
+
+OCCUPATIONAL MEDICINE
+
+0123271
+9283117
