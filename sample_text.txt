@@ -1,0 +1,8 @@
+case_1 = "Patient is a 48-year-old male presenting with persistent cough, mild bacterial sinusitis, and seasonal allergies. I am prescribing Amoxicillin 500 mg three times a day for 10 days, Cetirizine 10 mg once daily, and Salbutamol inhaler two puffs every six hours as needed for wheezing. Advise hydration and monitor symptoms. Recheck if no improvement in 5 days."
+
+
+case_2 = "The patient is a 32-year-old female with moderate dyspepsia and anxiety. I am prescribing Omeprazole 20 mg once daily before breakfast and Buspirone 5 mg twice daily. Recommend stress-reduction activities and avoidance of spicy foods."
+
+
+
+case_3 = "The patient, a 67-year-old male, presents with osteoarthritis pain and insomnia. I am prescribing Naproxen 250 mg twice daily, Melatonin to be taken at bedtime, and Paracetamol 500 mg every six hours as needed for pain. Educate about avoiding NSAIDs on an empty stomach."
