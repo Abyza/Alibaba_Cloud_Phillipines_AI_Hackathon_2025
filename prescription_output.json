@@ -1,20 +1,8 @@
 [
     {
-        "medication": "Amoxicillin",
-        "dosage": "500 mg",
-        "frequency": "three times a day",
-        "notes": "Take for 10 days to treat bacterial sinusitis."
-    },
-    {
-        "medication": "Cetirizine",
-        "dosage": "10 mg",
-        "frequency": "once daily",
-        "notes": "For management of seasonal allergies."
-    },
-    {
-        "medication": "Salbutamol inhaler",
-        "dosage": "2 puffs",
-        "frequency": "every six hours as needed",
-        "notes": "Use for wheezing or bronchospasm relief."
+        "medication": "fail",
+        "dosage": "fail",
+        "frequency": "fail",
+        "notes": "fail"
     }
 ]

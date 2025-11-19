@@ -7,6 +7,8 @@ from pydub import AudioSegment
 from io import BytesIO
 from utils import *  # Import everything from the utils.py file
 
+import os
+
 
 # Sidebar for healthcare provider details
 st.sidebar.title("Healthcare Provider Information")
@@ -94,7 +96,8 @@ if len(audio) > 0:
 
     st.success(f"🎉 Recording saved as `{wav_file}`")
 
-    transcribe_audio(wav_file)
+    text_extracted = transcribe_audio(wav_file)
+    generate_prescription_from_dictation(text_extracted)
 
     # Pretty json to be populated in Additional Notes
     pretty_json = json.dumps(load_prescriptions(), indent=4)

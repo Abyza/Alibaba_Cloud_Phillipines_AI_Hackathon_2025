@@ -1,4 +1,12 @@
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Now you can access your API keys using os.getenv()
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 def transcribe_audio(audio_file_name: str):
     """Take an audio file name and return the transcript."""
@@ -29,16 +37,17 @@ def generate_prescription_from_dictation(text: str, file_name="prescription_outp
     
     # Define strict instructions to output prescription details in JSON format
     messages = [
-        (
-            "system", 
-            "You are an AI assistant that generates e-prescriptions based on the doctor's dictation. "
-            "When the doctor dictates a prescription, extract all medications mentioned, along with their name, dosage, frequency, "
-            "and any additional instructions or notes. Do not include any patient identifying information such as name. "
-            "Output the prescription details as a list of JSON objects, each containing the following keys: "
-            "'medication', 'dosage', 'frequency', and 'notes'. Ensure the output is in JSON format, with each medication as a separate object."
-        ),
-        ("human", text),  # This is the doctor's dictation input
-    ]
+    (
+        "system", 
+        "You are an AI assistant that generates e-prescriptions based on the doctor's dictation. "
+        "When the doctor dictates a prescription, extract all medications mentioned, along with their name, dosage, frequency, "
+        "and any additional instructions or notes. Do not include any patient identifying information such as name. "
+        "Output the prescription details as a list of JSON objects, each containing the following keys: "
+        "'medication', 'dosage', 'frequency', and 'notes'. Ensure the output is in JSON format, with each medication as a separate object. "
+        "Even if only one medication is mentioned, wrap it in a list, so the response is always a JSON array with one or more objects."
+    ),
+    ("human", text),  # This is the doctor's dictation input
+]
     
     try:
         # Get the AI response
