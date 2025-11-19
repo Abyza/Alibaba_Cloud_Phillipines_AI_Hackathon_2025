@@ -181,3 +181,24 @@ def generate_prescription_pdf(json_file="provider_info.json", logo_path="provide
     pdf.save()
     print(f"✅ Prescription PDF created successfully: {output_pdf}")
 
+import json
+import os
+
+def load_prescriptions(json_file_path="prescription_output.json"):
+    """
+    Loads prescription information from a JSON file.
+
+    Args:
+        json_file_path (str): Path to the JSON file containing prescription data.
+
+    Returns:
+        list: List of prescriptions from the JSON file. If the file doesn't exist or 
+              doesn't contain valid data, it returns an empty list.
+    """
+    if os.path.exists(json_file_path):
+        with open(json_file_path, "r") as file:
+            prescriptions = json.load(file)
+        
+        return prescriptions  # Return the list of prescriptions
+    else:
+        return []  # Return an empty list if the file doesn't exist
